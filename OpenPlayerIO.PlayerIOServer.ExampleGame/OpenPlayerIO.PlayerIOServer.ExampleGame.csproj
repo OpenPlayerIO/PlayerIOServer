@@ -10,4 +10,8 @@
     <ProjectReference Include="..\OpenPlayerIO.PlayerIOServer\OpenPlayerIO.PlayerIOServer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>

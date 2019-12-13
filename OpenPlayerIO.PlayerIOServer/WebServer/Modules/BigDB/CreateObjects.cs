@@ -24,18 +24,21 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post[$"/api/{Channel}"] = _ => {
+            this.Post($"/api/{Channel}", delegate
+            {
                 var createObjectsArgs = Serializer.Deserialize<CreateObjectsArgs>(this.Request.Body);
                 var createObjectsOutput = new CreateObjectsOutput();
 
                 var playerToken = PlayerToken.Decode(this.Request.Headers["playertoken"].FirstOrDefault());
-                switch (playerToken.State) {
+                switch (playerToken.State)
+                {
                     case PlayerTokenState.Invalid: return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InternalError, Message = "The specified PlayerToken is invalid." });
                     case PlayerTokenState.Expired: return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InternalError, Message = "The specified PlayerToken has expired." });
                 }
 
                 // if they request no objects, return no objects
-                if (createObjectsArgs.Objects.Length < 1) {
+                if (createObjectsArgs.Objects.Length < 1)
+                {
                     createObjectsOutput.Objects = new DatabaseObject[0];
 
                     return new ChannelResponse().Get(createObjectsOutput, this.Request.Headers["playertoken"].First());
@@ -46,7 +49,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                 var collection = database.GetCollection<BsonDocument>(createObjectsArgs.Objects[0].Table);
 
                 var databaseObjects = new List<DatabaseObject>();
-                foreach (var databaseObject in createObjectsArgs.Objects.OrderByDescending(x => x.Table)) {
+                foreach (var databaseObject in createObjectsArgs.Objects.OrderByDescending(x => x.Table))
+                {
                     // load collection once per unique table for performance reasons
                     if (databaseObject.Table != collection.CollectionNamespace.CollectionName)
                         collection = database.GetCollection<BsonDocument>(databaseObject.Table);
@@ -74,7 +78,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                     var document = collection.Find(Builders<BsonDocument>.Filter.Eq("Key", playerToken.ConnectUserId)).FirstOrDefault();
 
                     // load existing database objects if required
-                    if (createObjectsArgs.LoadExisting && document != null) {
+                    if (createObjectsArgs.LoadExisting && document != null)
+                    {
                         var existingDatabaseObject = new DatabaseObject();
 
                         if (document.TryGetValue("_version", out var value))
@@ -100,7 +105,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                     collection.InsertOne(BsonDocument.Parse(JsonConvert.SerializeObject(databaseObject)).Add("_version", "1"));
 
                     // insert the database object into the the output
-                    databaseObjects.Add(new DatabaseObject() {
+                    databaseObjects.Add(new DatabaseObject()
+                    {
                         Table = databaseObject.Table,
                         Key = databaseObject.Key,
                         Properties = databaseObject.Properties,
@@ -111,7 +117,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                 createObjectsOutput.Objects = databaseObjects.ToArray();
 
                 return new ChannelResponse().Get(createObjectsOutput, this.Request.Headers["playertoken"].First(), false);
-            };
+            });
         }
     }
 }

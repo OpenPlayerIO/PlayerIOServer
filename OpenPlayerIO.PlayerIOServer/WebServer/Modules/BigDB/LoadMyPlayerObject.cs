@@ -21,12 +21,14 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post[$"/api/{Channel}"] = _ => {
+            this.Post($"/api/{Channel}", delegate
+            {
                 var loadMyPlayerObjectOutput = new LoadMyPlayerObjectOutput() { PlayerObject = new DatabaseObject() };
 
                 // return an error if the specified PlayerToken is invalid
                 var playerToken = PlayerToken.Decode(this.Request.Headers["playertoken"].FirstOrDefault());
-                switch (playerToken.State) {
+                switch (playerToken.State)
+                {
                     case PlayerTokenState.Invalid: return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InternalError, Message = "The specified PlayerToken is invalid." });
                     case PlayerTokenState.Expired: return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InternalError, Message = "The specified PlayerToken has expired." });
                 }
@@ -53,7 +55,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                 loadMyPlayerObjectOutput.PlayerObject.Properties = _databaseObject.Properties;
 
                 return new ChannelResponse().Get(loadMyPlayerObjectOutput, this.Request.Headers["playertoken"].First());
-            };
+            });
         }
     }
 }
