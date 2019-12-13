@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenPlayerIO.PlayerIOServer", "OpenPlayerIO.PlayerIOServer\OpenPlayerIO.PlayerIOServer.csproj", "{C79F3527-45B7-4BF0-AF16-CFAB251D88BB}"
 EndProject
@@ -30,5 +30,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7D6B059-F3F6-4344-BE77-2644A2C14748}
 	EndGlobalSection
 EndGlobal
