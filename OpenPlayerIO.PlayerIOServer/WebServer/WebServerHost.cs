@@ -1,5 +1,5 @@
 ﻿using System;
-using Nancy.Hosting.Self;
+using Nancy.Hosting.Kestrel;
 
 namespace OpenPlayerIO.PlayerIOServer.WebServer
 {

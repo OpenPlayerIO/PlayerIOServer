@@ -2,8 +2,6 @@
 {
     using Helpers;
 
-    using Player;
-
     public abstract class BaseGame
     {
         public abstract int PlayerCount { get; }
@@ -13,13 +11,13 @@
 
         internal abstract void Setup(GameServerHost host, string roomType);
 
-        internal abstract void GotMessage(BasePlayer player, Message message);
+        internal abstract void GotMessage(Player.BasePlayer player, Message message);
 
-        internal abstract void Disconnect(BasePlayer player);
+        internal abstract void Disconnect(Player.BasePlayer player);
 
-        internal abstract void UserJoined(BasePlayer player);
+        internal abstract void UserJoined(Player.BasePlayer player);
 
-        internal abstract void UserLeft(BasePlayer player);
+        internal abstract void UserLeft(Player.BasePlayer player);
 
         /// <summary> This method is called when a game is closed. </summary>
         public virtual void GameClosed()
