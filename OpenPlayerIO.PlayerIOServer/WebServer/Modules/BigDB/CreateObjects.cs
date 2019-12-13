@@ -24,7 +24,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post($"/api/{Channel}", delegate
+            this.Post($"/api/{Channel}", _ =>
             {
                 var createObjectsArgs = Serializer.Deserialize<CreateObjectsArgs>(this.Request.Body);
                 var createObjectsOutput = new CreateObjectsOutput();

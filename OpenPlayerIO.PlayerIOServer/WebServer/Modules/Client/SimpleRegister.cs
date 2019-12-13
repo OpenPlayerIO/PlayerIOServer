@@ -24,7 +24,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post($"/api/{Channel}", delegate
+            this.Post($"/api/{Channel}", _ =>
             {
                 var simpleRegisterArgs = Serializer.Deserialize<SimpleRegisterArgs>(this.Request.Body);
                 var simpleRegisterOutput = new SimpleRegisterOutput();

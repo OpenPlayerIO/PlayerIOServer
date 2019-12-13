@@ -20,7 +20,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post($"/api/{Channel}", delegate
+            this.Post($"/api/{Channel}", _ =>
             {
                 var createJoinRoomArgs = Serializer.Deserialize<CreateJoinRoomArgs>(this.Request.Body);
                 var createJoinRoomOutput = new CreateJoinRoomOutput();

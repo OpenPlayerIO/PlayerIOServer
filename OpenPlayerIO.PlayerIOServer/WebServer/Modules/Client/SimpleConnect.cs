@@ -23,7 +23,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post($"/api/{Channel}", delegate
+            this.Post($"/api/{Channel}", _ =>
             {
                 var simpleConnectArgs = Serializer.Deserialize<SimpleConnectArgs>(this.Request.Body);
                 var simpleConnectOutput = new SimpleConnectOutput();

@@ -21,7 +21,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post($"/api/{Channel}", delegate
+            this.Post($"/api/{Channel}", _ =>
             {
                 var loadMyPlayerObjectOutput = new LoadMyPlayerObjectOutput() { PlayerObject = new DatabaseObject() };
 

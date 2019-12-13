@@ -10,11 +10,13 @@ namespace OpenPlayerIO.PlayerIOServer
         public static WebServerHost WebServer;
         public static GameServerHost GameServer;
 
-        public static void Start()
-        {
-            DatabaseHost.Connect("mongodb://localhost");
+        private const string _defaultMongoDBConnectionString = "mongodb://localhost";
 
-            WebServer = new WebServerHost();
+        public static void Start(int httpPort = WebServerHost.defaultHttpPort, string mongoDBConnectionString = _defaultMongoDBConnectionString)
+        {
+            DatabaseHost.Connect(mongoDBConnectionString);
+
+            WebServer = new WebServerHost(httpPort);
             GameServer = new GameServerHost();
 
             WebServer.Start();
