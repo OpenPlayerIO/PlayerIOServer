@@ -47,7 +47,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer
                 option.AllowSynchronousIO = true;
             })
             .UseStartup<Startup>()
-            .UseUrls($"http://localhost:{port}/")
+            .UseUrls($"http://*:{port}/")
             .Build();
         }
 
