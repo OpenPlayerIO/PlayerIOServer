@@ -23,12 +23,14 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post[$"/api/{Channel}"] = _ => {
+            this.Post($"/api/{Channel}", _ =>
+            {
                 var playerToken = PlayerToken.Decode(this.Request.Headers["playertoken"].FirstOrDefault());
                 var loadObjectsArgs = Serializer.Deserialize<LoadObjectsArgs>(this.Request.Body);
                 var loadObjectsOutput = new LoadObjectsOutput();
 
-                switch (playerToken.State) {
+                switch (playerToken.State)
+                {
                     case PlayerTokenState.Invalid:
                         return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InternalError, Message = "The specified PlayerToken is invalid." });
                     case PlayerTokenState.Expired:
@@ -47,7 +49,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                 var collection = DatabaseHost.Client.GetDatabase(playerToken.GameId).GetCollection<BsonDocument>(loadObjectsArgs.ObjectIds.Table);
                 var databaseObjects = new List<DatabaseObject>();
 
-                foreach (var objectKey in loadObjectsArgs.ObjectIds.Keys) {
+                foreach (var objectKey in loadObjectsArgs.ObjectIds.Keys)
+                {
                     // prevent creating objects with invalid characters within the keys
                     if (!objectKey.All(char.IsLetterOrDigit))
                         return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.AccessDenied, Message = "DatabaseObject keys cannot contain non-alphanumeric characters." });
@@ -59,7 +62,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                     // query the database for keys matching the key specified
                     var document = collection.Find(Builders<BsonDocument>.Filter.Eq("Key", objectKey)).FirstOrDefault();
 
-                    if (document != null) {
+                    if (document != null)
+                    {
                         var databaseObject = new DatabaseObject();
 
                         // retrieve the document version if available
@@ -84,7 +88,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.BigDB
                 loadObjectsOutput.Objects = databaseObjects.ToArray();
 
                 return new ChannelResponse().Get(loadObjectsOutput, this.Request.Headers["playertoken"].First());
-            };
+            });
         }
     }
 }

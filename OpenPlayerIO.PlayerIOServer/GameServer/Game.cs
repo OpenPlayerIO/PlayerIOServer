@@ -6,9 +6,7 @@ namespace OpenPlayerIO.PlayerIOServer.GameServer
     using Extensions;
     using Helpers;
 
-    using Player;
-
-    public abstract class Game<P> : BaseGame where P : BasePlayer, new()
+    public abstract class Game<P> : BaseGame where P : Player.BasePlayer, new()
     {
         internal GameServerHost Host { get; set; }
         internal int PlayerInstanceId { get; set; }
@@ -29,14 +27,14 @@ namespace OpenPlayerIO.PlayerIOServer.GameServer
             this.PlayerInstanceId = 0;
         }
 
-        internal override void GotMessage(BasePlayer player, Message message)
+        internal override void GotMessage(Player.BasePlayer player, Message message)
         {
             var _player = this.Players.First(p => p.Id == player.Id);
 
             this.GotMessage(_player, message);
         }
 
-        internal override void Disconnect(BasePlayer player)
+        internal override void Disconnect(Player.BasePlayer player)
         {
             var _player = this.Players.First(p => p.Id == player.Id);
 
@@ -44,7 +42,7 @@ namespace OpenPlayerIO.PlayerIOServer.GameServer
             this.Players.Remove(_player);
         }
 
-        internal override void UserJoined(BasePlayer player)
+        internal override void UserJoined(Player.BasePlayer player)
         {
             player.Id = ++PlayerInstanceId;
 
@@ -54,7 +52,7 @@ namespace OpenPlayerIO.PlayerIOServer.GameServer
             this.UserJoined(_player);
         }
 
-        internal override void UserLeft(BasePlayer player)
+        internal override void UserLeft(Player.BasePlayer player)
         {
             var _player = this.Players.First(p => p.Id == player.Id);
 

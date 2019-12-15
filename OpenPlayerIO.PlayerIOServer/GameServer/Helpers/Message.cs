@@ -80,8 +80,10 @@ namespace OpenPlayerIO.PlayerIOServer.GameServer.Helpers
                     case string _: type = ObjectType.String;    break;
                     case byte[] _: type = ObjectType.ByteArray; break;
                     case bool   _: type = ObjectType.Boolean;   break;
-
-                    case object _ when _ is null: throw new Exception("You cannot add null values to Player.IO Messages.");
+                    case object _:
+                        if (value is null)
+                            throw new Exception("You cannot add null values to Player.IO Messages.");
+                        break;
                     default: throw new InvalidOperationException(string.Format(string.Concat($"Player.IO Messages only support objects of types: {0} Type '{value.GetType().FullName}' is not supported."),
                                                                  string.Join(", ", Enum.GetNames(typeof(ObjectType)))) + Environment.NewLine);
                 }

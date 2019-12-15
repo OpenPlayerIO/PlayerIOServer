@@ -1,19 +1,68 @@
-﻿using System;
-using Nancy.Hosting.Self;
+﻿using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Nancy.Hosting.Kestrel;
+using Microsoft.AspNetCore.Builder;
+using Nancy.Owin;
+using Nancy.Bootstrapper;
+using Nancy;
+using Nancy.Configuration;
 
 namespace OpenPlayerIO.PlayerIOServer.WebServer
 {
+    public class PlayerIONancyBootstrapper : DefaultNancyBootstrapper
+    {
+        public override void Configure(Nancy.Configuration.INancyEnvironment environment)
+        {
+#if DEBUG
+
+            environment.Tracing(true, true);
+
+#endif
+        }
+    }
+
+    public class Startup
+    {
+        public void Configure(IApplicationBuilder app)
+        {
+            app.UseOwin(
+                x => x.UseNancy(
+                    y => y.Bootstrapper = new PlayerIONancyBootstrapper()));
+        }
+    }
+
     public class WebServerHost
     {
-        public NancyHost Server { get; set; }
+        internal const int defaultHttpPort = 80;
+
+        private IWebHost Server { get; set; }
+
+        private void BuildWebServer(int port)
+        {
+            Server = new WebHostBuilder()
+            .UseContentRoot(Directory.GetCurrentDirectory())
+            .UseKestrel(option =>
+            {
+                //In order to keep current implementation with Kestrel working
+                option.AllowSynchronousIO = true;
+            })
+            .UseStartup<Startup>()
+            .UseUrls($"http://*:{port}/")
+            .Build();
+        }
 
         public WebServerHost()
         {
-            this.Server = new NancyHost(new Uri($"http://localhost:80"));
+            BuildWebServer(defaultHttpPort);
         }
 
-        public void Start() => Server.Start();
+        public WebServerHost(int port)
+        {
+            BuildWebServer(port);
+        }
 
-        public void Stop() => Server.Stop();
+        public void Start() => Server.StartAsync();
+
+        public void Stop() => Server.StopAsync();
     }
 }

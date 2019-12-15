@@ -43,7 +43,7 @@ namespace OpenPlayerIO.PlayerIOServer.GameServer
             // subscribe to relevant events
             this.Server.Connected += (s, args) => {
                 var channel = args.Channel;
-                var player = new BasePlayer() { Host = this };
+                var player = new Player.BasePlayer() { Host = this };
 
                 // the join key provided after connection will determine the requested game
                 player.Connection = new PlayerConnection(player, channel);

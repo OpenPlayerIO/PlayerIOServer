@@ -23,7 +23,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post[$"/api/{Channel}"] = _ => {
+            this.Post($"/api/{Channel}", _ =>
+            {
                 var simpleConnectArgs = Serializer.Deserialize<SimpleConnectArgs>(this.Request.Body);
                 var simpleConnectOutput = new SimpleConnectOutput();
 
@@ -42,7 +43,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
                 simpleConnectOutput.Token = new PlayerToken(simpleConnectArgs.GameId, simpleConnectOutput.UserId, DateTimeOffset.UtcNow.AddHours(24)).Encode();
 
                 return new ChannelResponse().Get(simpleConnectOutput, null, false);
-            };
+            });
         }
     }
 }

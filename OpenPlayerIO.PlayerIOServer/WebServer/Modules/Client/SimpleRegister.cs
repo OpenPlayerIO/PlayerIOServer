@@ -24,7 +24,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post[$"/api/{Channel}"] = _ => {
+            this.Post($"/api/{Channel}", _ =>
+            {
                 var simpleRegisterArgs = Serializer.Deserialize<SimpleRegisterArgs>(this.Request.Body);
                 var simpleRegisterOutput = new SimpleRegisterOutput();
 
@@ -33,20 +34,24 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
 
                 // ensure the email address is valid (disregarding the TLD)
                 var validEmailRegex = @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
-                if (!Regex.IsMatch(simpleRegisterArgs.Email, validEmailRegex, RegexOptions.IgnoreCase)) {
+                if (!Regex.IsMatch(simpleRegisterArgs.Email, validEmailRegex, RegexOptions.IgnoreCase))
+                {
                     return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InvalidRegistrationData, Message = "The specified email address is invalid." });
                 }
 
-                if (collection.AsQueryable().Where(x => x.Name == simpleRegisterArgs.Username).Any()) {
+                if (collection.AsQueryable().Where(x => x.Name == simpleRegisterArgs.Username).Any())
+                {
                     return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InvalidRegistrationData, Message = "The specified name is already in use." });
                 }
 
-                if (collection.AsQueryable().Where(x => x.Email == simpleRegisterArgs.Email).Any()) {
+                if (collection.AsQueryable().Where(x => x.Email == simpleRegisterArgs.Email).Any())
+                {
                     return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InvalidRegistrationData, Message = "The specified email address is already in use." });
                 }
 
                 var registrationDate = DateTimeOffset.UtcNow.ToUnixTimeMilliseconds();
-                var registeredUserAccount = new UserAccount() {
+                var registeredUserAccount = new UserAccount()
+                {
                     Type = AccountType.Simple,
                     ConnectUserId = $"simple{registrationDate}x{PlayerIOEncrypt.CRNG.Next(0, 99)}",
                     Name = simpleRegisterArgs.Username,
@@ -61,7 +66,7 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
                 simpleRegisterOutput.Token = new PlayerToken(simpleRegisterArgs.GameId, registeredUserAccount.ConnectUserId).Encode();
 
                 return new ChannelResponse().Get(simpleRegisterOutput, simpleRegisterOutput.Token);
-            };
+            });
         }
     }
 }

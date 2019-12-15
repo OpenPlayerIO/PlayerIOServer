@@ -1,235 +1,233 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E019CAE1-8815-4740-A36A-667D806D2002}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenPlayerIO.MessageLibrary</RootNamespace>
-    <AssemblyName>OpenPlayerIO.MessageLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>OpenPlayerIO</PackageId>
+    <Company>Hewlett-Packard</Company>
+    <Product>OpenPlayerIO</Product>
+    <Copyright>Copyright © Hewlett-Packard 2016</Copyright>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="MongoDB.Bson, Version=2.4.0.70, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Bson.2.4.0\lib\net45\MongoDB.Bson.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="protobuf-net, Version=2.0.0.621, Culture=neutral, PublicKeyToken=257b51d87d2e4d67, processorArchitecture=MSIL">
-      <HintPath>..\packages\protobuf-net.2.0.0.621\lib\net40\protobuf-net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <Compile Remove="Unimplemented\Achievement.cs" />
+    <Compile Remove="Unimplemented\AchievementsLoadArgs.cs" />
+    <Compile Remove="Unimplemented\AchievementsLoadOutput.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressAddArgs.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressAddOutput.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressCompleteArgs.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressCompleteOutput.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressMaxArgs.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressMaxOutput.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressSetArgs.cs" />
+    <Compile Remove="Unimplemented\AchievementsProgressSetOutput.cs" />
+    <Compile Remove="Unimplemented\AchievementsRefreshArgs.cs" />
+    <Compile Remove="Unimplemented\AchievementsRefreshOutput.cs" />
+    <Compile Remove="Unimplemented\AuthenticateArgs.cs" />
+    <Compile Remove="Unimplemented\AuthenticateOutput.cs" />
+    <Compile Remove="Unimplemented\AuthenticateStartDialog.cs" />
+    <Compile Remove="Unimplemented\BigDBChangeset.cs" />
+    <Compile Remove="Unimplemented\CreateRoomArgs.cs" />
+    <Compile Remove="Unimplemented\CreateRoomOutput.cs" />
+    <Compile Remove="Unimplemented\CreateTestAccountArgs.cs" />
+    <Compile Remove="Unimplemented\CreateTestAccountOutput.cs" />
+    <Compile Remove="Unimplemented\DeleteIndexRangeArgs.cs" />
+    <Compile Remove="Unimplemented\DeleteIndexRangeOutput.cs" />
+    <Compile Remove="Unimplemented\FlushEventReducersArgs.cs" />
+    <Compile Remove="Unimplemented\FlushEventReducersOutput.cs" />
+    <Compile Remove="Unimplemented\GameRequestsDeleteArgs.cs" />
+    <Compile Remove="Unimplemented\GameRequestsDeleteOutput.cs" />
+    <Compile Remove="Unimplemented\GameRequestsRefreshArgs.cs" />
+    <Compile Remove="Unimplemented\GameRequestsRefreshOutput.cs" />
+    <Compile Remove="Unimplemented\GameRequestsSendArgs.cs" />
+    <Compile Remove="Unimplemented\GameRequestsSendOutput.cs" />
+    <Compile Remove="Unimplemented\LoadIndexRangeArgs.cs" />
+    <Compile Remove="Unimplemented\LoadIndexRangeOutput.cs" />
+    <Compile Remove="Unimplemented\LoadMatchingObjectsArgs.cs" />
+    <Compile Remove="Unimplemented\LoadMatchingObjectsOutput.cs" />
+    <Compile Remove="Unimplemented\Notification.cs" />
+    <Compile Remove="Unimplemented\NotificationsDeleteEndpointsArgs.cs" />
+    <Compile Remove="Unimplemented\NotificationsDeleteEndpointsOutput.cs" />
+    <Compile Remove="Unimplemented\NotificationsEndpoint.cs" />
+    <Compile Remove="Unimplemented\NotificationsEndpointId.cs" />
+    <Compile Remove="Unimplemented\NotificationsRefreshArgs.cs" />
+    <Compile Remove="Unimplemented\NotificationsRefreshOutput.cs" />
+    <Compile Remove="Unimplemented\NotificationsRegisterEndpointsArgs.cs" />
+    <Compile Remove="Unimplemented\NotificationsRegisterEndpointsOutput.cs" />
+    <Compile Remove="Unimplemented\NotificationsSendArgs.cs" />
+    <Compile Remove="Unimplemented\NotificationsSendOutput.cs" />
+    <Compile Remove="Unimplemented\NotificationsToggleEndpointsArgs.cs" />
+    <Compile Remove="Unimplemented\NotificationsToggleEndpointsOutput.cs" />
+    <Compile Remove="Unimplemented\OneScoreAddArgs.cs" />
+    <Compile Remove="Unimplemented\OneScoreAddOutput.cs" />
+    <Compile Remove="Unimplemented\OneScoreLoadArgs.cs" />
+    <Compile Remove="Unimplemented\OneScoreLoadOutput.cs" />
+    <Compile Remove="Unimplemented\OneScoreRefreshArgs.cs" />
+    <Compile Remove="Unimplemented\OneScoreRefreshOutput.cs" />
+    <Compile Remove="Unimplemented\OneScoreSetArgs.cs" />
+    <Compile Remove="Unimplemented\OneScoreSetOutput.cs" />
+    <Compile Remove="Unimplemented\OneScoreValue.cs" />
+    <Compile Remove="Unimplemented\PartnerPaySetTagArgs.cs" />
+    <Compile Remove="Unimplemented\PartnerPaySetTagOutput.cs" />
+    <Compile Remove="Unimplemented\PartnerPayTriggerArgs.cs" />
+    <Compile Remove="Unimplemented\PartnerPayTriggerOutput.cs" />
+    <Compile Remove="Unimplemented\PayVaultUsePaymentInfoArgs.cs" />
+    <Compile Remove="Unimplemented\PayVaultUsePaymentInfoOutput.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightEvent.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightRefreshArgs.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightRefreshOutput.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightSessionKeepAliveArgs.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightSessionKeepAliveOutput.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightSessionStopArgs.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightSessionStopOutput.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightSetSegmentsArgs.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightSetSegmentsOutput.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightTrackEventsArgs.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightTrackEventsOutput.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightTrackExternalPaymentArgs.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightTrackExternalPaymentOutput.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightTrackInvitedByArgs.cs" />
+    <Compile Remove="Unimplemented\PlayerInsightTrackInvitedByOutput.cs" />
+    <Compile Remove="Unimplemented\RemoveTestAccountsArgs.cs" />
+    <Compile Remove="Unimplemented\RemoveTestAccountsOutput.cs" />
+    <Compile Remove="Unimplemented\SaveObjectChangesArgs.cs" />
+    <Compile Remove="Unimplemented\SaveObjectChangesOutput.cs" />
+    <Compile Remove="Unimplemented\SimpleGetCaptchaArgs.cs" />
+    <Compile Remove="Unimplemented\SimpleGetCaptchaOutput.cs" />
+    <Compile Remove="Unimplemented\SimpleRecoverPasswordArgs.cs" />
+    <Compile Remove="Unimplemented\SimpleRecoverPasswordOutput.cs" />
+    <Compile Remove="Unimplemented\SimpleUserGetSecureLoginInfoArgs.cs" />
+    <Compile Remove="Unimplemented\SimpleUserGetSecureLoginInfoOutput.cs" />
+    <Compile Remove="Unimplemented\SocialLoadProfilesArgs.cs" />
+    <Compile Remove="Unimplemented\SocialLoadProfilesOutput.cs" />
+    <Compile Remove="Unimplemented\SocialProfile.cs" />
+    <Compile Remove="Unimplemented\SocialRefreshArgs.cs" />
+    <Compile Remove="Unimplemented\SocialRefreshOutput.cs" />
+    <Compile Remove="Unimplemented\TestNotification.cs" />
+    <Compile Remove="Unimplemented\TestNotificationReadSentArgs.cs" />
+    <Compile Remove="Unimplemented\TestNotificationReadSentOutput.cs" />
+    <Compile Remove="Unimplemented\TestNotificationRegisteredEndpoint.cs" />
+    <Compile Remove="Unimplemented\UsePayVaultTestInfoArgs.cs" />
+    <Compile Remove="Unimplemented\UsePayVaultTestInfoOutput.cs" />
+    <Compile Remove="Unimplemented\UserAchievements.cs" />
+    <Compile Remove="Unimplemented\WaitingGameRequest.cs" />
+    <Compile Remove="Unimplemented\WriteSystemErrorArgs.cs" />
+    <Compile Remove="Unimplemented\WriteSystemErrorOutput.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="BigDB\BigDBObjectId.cs" />
-    <Compile Include="BigDB\BigDBObjectValue.cs" />
-    <Compile Include="BigDB\CreateObjectsArgs.cs" />
-    <Compile Include="BigDB\CreateObjectsOutput.cs" />
-    <Compile Include="BigDB\DeleteObjectsArgs.cs" />
-    <Compile Include="BigDB\DeleteObjectsOutput.cs" />
-    <Compile Include="BigDB\LoadMyPlayerObjectOutput.cs" />
-    <Compile Include="BigDB\LoadObjectsArgs.cs" />
-    <Compile Include="BigDB\LoadObjectsError.cs" />
-    <Compile Include="BigDB\LoadObjectsOutput.cs" />
-    <Compile Include="BigDB\SentDatabaseObject.cs" />
-    <Compile Include="Client\ConnectArgs.cs" />
-    <Compile Include="Client\ConnectOutput.cs" />
-    <Compile Include="Client\CreateJoinRoomArgs.cs" />
-    <Compile Include="Client\CreateJoinRoomOutput.cs" />
-    <Compile Include="Client\FacebookOAuthConnectArgs.cs" />
-    <Compile Include="Client\FacebookOAuthConnectOutput.cs" />
-    <Compile Include="Client\JoinRoomArgs.cs" />
-    <Compile Include="Client\JoinRoomOutput.cs" />
-    <Compile Include="Client\KongregateConnectArgs.cs" />
-    <Compile Include="Client\KongregateConnectOutput.cs" />
-    <Compile Include="Client\ListRoomsArgs.cs" />
-    <Compile Include="Client\ListRoomsOutput.cs" />
-    <Compile Include="Client\SimpleConnectArgs.cs" />
-    <Compile Include="Client\SimpleConnectOutput.cs" />
-    <Compile Include="Client\SimpleRecoverPasswordArgs.cs" />
-    <Compile Include="Client\SimpleRegisterArgs.cs" />
-    <Compile Include="Client\SimpleRegisterOutput.cs" />
-    <Compile Include="Client\SteamConnectArgs.cs" />
-    <Compile Include="Client\SteamConnectOutput.cs" />
-    <Compile Include="BigDB\DatabaseObject.cs" />
-    <Compile Include="Construct\BigDBObjectValue.cs" />
-    <Compile Include="Construct\DatabaseObject.cs" />
-    <Compile Include="Construct\RoomInfo.cs" />
-    <Compile Include="Enums\ErrorCode.cs" />
-    <Compile Include="Enums\ObjectType.cs" />
-    <Compile Include="ErrorLog\WriteErrorArgs.cs" />
-    <Compile Include="ErrorLog\WriteErrorOutput.cs" />
-    <Compile Include="Error\Error.cs" />
-    <Compile Include="Error\RegistrationError.cs" />
-    <Compile Include="Construct\KeyValuePair.cs" />
-    <Compile Include="Construct\NoArgsOrOutput.cs" />
-    <Compile Include="PayVault\PayVaultBuyArgs.cs" />
-    <Compile Include="PayVault\PayVaultBuyItemInfo.cs" />
-    <Compile Include="PayVault\PayVaultBuyOutput.cs" />
-    <Compile Include="PayVault\PayVaultConsumeArgs.cs" />
-    <Compile Include="PayVault\PayVaultConsumeOutput.cs" />
-    <Compile Include="PayVault\PayVaultContents.cs" />
-    <Compile Include="PayVault\PayVaultCreditArgs.cs" />
-    <Compile Include="PayVault\PayVaultCreditOutput.cs" />
-    <Compile Include="PayVault\PayVaultDebitArgs.cs" />
-    <Compile Include="PayVault\PayVaultDebitOutput.cs" />
-    <Compile Include="PayVault\PayVaultGiveArgs.cs" />
-    <Compile Include="PayVault\PayVaultGiveOutput.cs" />
-    <Compile Include="PayVault\PayVaultHistoryEntry.cs" />
-    <Compile Include="PayVault\PayVaultItem.cs" />
-    <Compile Include="PayVault\PayVaultPaymentInfoArgs.cs" />
-    <Compile Include="PayVault\PayVaultPaymentInfoOutput.cs" />
-    <Compile Include="PayVault\PayVaultReadHistoryArgs.cs" />
-    <Compile Include="PayVault\PayVaultReadHistoryOutput.cs" />
-    <Compile Include="PayVault\PayVaultRefreshArgs.cs" />
-    <Compile Include="PayVault\PayVaultRefreshOutput.cs" />
-    <Compile Include="Construct\ServerEndpoint.cs" />
-    <Content Include="Unimplemented\Achievement.cs" />
-    <Content Include="Unimplemented\AchievementsLoadArgs.cs" />
-    <Content Include="Unimplemented\AchievementsLoadOutput.cs" />
-    <Content Include="Unimplemented\AchievementsProgressAddArgs.cs" />
-    <Content Include="Unimplemented\AchievementsProgressAddOutput.cs" />
-    <Content Include="Unimplemented\AchievementsProgressCompleteArgs.cs" />
-    <Content Include="Unimplemented\AchievementsProgressCompleteOutput.cs" />
-    <Content Include="Unimplemented\AchievementsProgressMaxArgs.cs" />
-    <Content Include="Unimplemented\AchievementsProgressMaxOutput.cs" />
-    <Content Include="Unimplemented\AchievementsProgressSetArgs.cs" />
-    <Content Include="Unimplemented\AchievementsProgressSetOutput.cs" />
-    <Content Include="Unimplemented\AchievementsRefreshArgs.cs" />
-    <Content Include="Unimplemented\AchievementsRefreshOutput.cs" />
-    <Content Include="Unimplemented\AuthenticateArgs.cs" />
-    <Content Include="Unimplemented\AuthenticateOutput.cs" />
-    <Content Include="Unimplemented\AuthenticateStartDialog.cs" />
-    <Content Include="Unimplemented\BigDBChangeset.cs" />
-    <Content Include="Unimplemented\CreateRoomArgs.cs" />
-    <Content Include="Unimplemented\CreateRoomOutput.cs" />
-    <Content Include="Unimplemented\CreateTestAccountArgs.cs" />
-    <Content Include="Unimplemented\CreateTestAccountOutput.cs" />
-    <Content Include="Unimplemented\DeleteIndexRangeArgs.cs" />
-    <Content Include="Unimplemented\DeleteIndexRangeOutput.cs" />
-    <Content Include="Unimplemented\FlushEventReducersArgs.cs" />
-    <Content Include="Unimplemented\FlushEventReducersOutput.cs" />
-    <Content Include="Unimplemented\GameRequestsDeleteArgs.cs" />
-    <Content Include="Unimplemented\GameRequestsDeleteOutput.cs" />
-    <Content Include="Unimplemented\GameRequestsRefreshArgs.cs" />
-    <Content Include="Unimplemented\GameRequestsRefreshOutput.cs" />
-    <Content Include="Unimplemented\GameRequestsSendArgs.cs" />
-    <Content Include="Unimplemented\GameRequestsSendOutput.cs" />
-    <Content Include="Unimplemented\LoadIndexRangeArgs.cs" />
-    <Content Include="Unimplemented\LoadIndexRangeOutput.cs" />
-    <Content Include="Unimplemented\LoadMatchingObjectsArgs.cs" />
-    <Content Include="Unimplemented\LoadMatchingObjectsOutput.cs" />
-    <Content Include="Unimplemented\Notification.cs" />
-    <Content Include="Unimplemented\NotificationsDeleteEndpointsArgs.cs" />
-    <Content Include="Unimplemented\NotificationsDeleteEndpointsOutput.cs" />
-    <Content Include="Unimplemented\NotificationsEndpoint.cs" />
-    <Content Include="Unimplemented\NotificationsEndpointId.cs" />
-    <Content Include="Unimplemented\NotificationsRefreshArgs.cs" />
-    <Content Include="Unimplemented\NotificationsRefreshOutput.cs" />
-    <Content Include="Unimplemented\NotificationsRegisterEndpointsArgs.cs" />
-    <Content Include="Unimplemented\NotificationsRegisterEndpointsOutput.cs" />
-    <Content Include="Unimplemented\NotificationsSendArgs.cs" />
-    <Content Include="Unimplemented\NotificationsSendOutput.cs" />
-    <Content Include="Unimplemented\NotificationsToggleEndpointsArgs.cs" />
-    <Content Include="Unimplemented\NotificationsToggleEndpointsOutput.cs" />
-    <Content Include="Unimplemented\OneScoreAddArgs.cs" />
-    <Content Include="Unimplemented\OneScoreAddOutput.cs" />
-    <Content Include="Unimplemented\OneScoreLoadArgs.cs" />
-    <Content Include="Unimplemented\OneScoreLoadOutput.cs" />
-    <Content Include="Unimplemented\OneScoreRefreshArgs.cs" />
-    <Content Include="Unimplemented\OneScoreRefreshOutput.cs" />
-    <Content Include="Unimplemented\OneScoreSetArgs.cs" />
-    <Content Include="Unimplemented\OneScoreSetOutput.cs" />
-    <Content Include="Unimplemented\OneScoreValue.cs" />
-    <Content Include="Unimplemented\PartnerPaySetTagArgs.cs" />
-    <Content Include="Unimplemented\PartnerPaySetTagOutput.cs" />
-    <Content Include="Unimplemented\PartnerPayTriggerArgs.cs" />
-    <Content Include="Unimplemented\PartnerPayTriggerOutput.cs" />
-    <Content Include="Unimplemented\PayVaultUsePaymentInfoArgs.cs" />
-    <Content Include="Unimplemented\PayVaultUsePaymentInfoOutput.cs" />
-    <Content Include="Unimplemented\PlayerInsightEvent.cs" />
-    <Content Include="Unimplemented\PlayerInsightRefreshArgs.cs" />
-    <Content Include="Unimplemented\PlayerInsightRefreshOutput.cs" />
-    <Content Include="Unimplemented\PlayerInsightSessionKeepAliveArgs.cs" />
-    <Content Include="Unimplemented\PlayerInsightSessionKeepAliveOutput.cs" />
-    <Content Include="Unimplemented\PlayerInsightSessionStopArgs.cs" />
-    <Content Include="Unimplemented\PlayerInsightSessionStopOutput.cs" />
-    <Content Include="Unimplemented\PlayerInsightSetSegmentsArgs.cs" />
-    <Content Include="Unimplemented\PlayerInsightSetSegmentsOutput.cs" />
-    <Compile Include="Client\PlayerInsightState.cs" />
-    <Content Include="Unimplemented\PlayerInsightTrackEventsArgs.cs" />
-    <Content Include="Unimplemented\PlayerInsightTrackEventsOutput.cs" />
-    <Content Include="Unimplemented\PlayerInsightTrackExternalPaymentArgs.cs" />
-    <Content Include="Unimplemented\PlayerInsightTrackExternalPaymentOutput.cs" />
-    <Content Include="Unimplemented\PlayerInsightTrackInvitedByArgs.cs" />
-    <Content Include="Unimplemented\PlayerInsightTrackInvitedByOutput.cs" />
-    <Content Include="Unimplemented\RemoveTestAccountsArgs.cs" />
-    <Content Include="Unimplemented\RemoveTestAccountsOutput.cs" />
-    <Content Include="Unimplemented\SaveObjectChangesArgs.cs" />
-    <Content Include="Unimplemented\SaveObjectChangesOutput.cs" />
-    <Content Include="Unimplemented\SimpleGetCaptchaArgs.cs" />
-    <Content Include="Unimplemented\SimpleGetCaptchaOutput.cs" />
-    <Content Include="Unimplemented\SimpleRecoverPasswordArgs.cs" />
-    <Content Include="Unimplemented\SimpleRecoverPasswordOutput.cs" />
-    <Content Include="Unimplemented\SimpleUserGetSecureLoginInfoArgs.cs" />
-    <Content Include="Unimplemented\SimpleUserGetSecureLoginInfoOutput.cs" />
-    <Content Include="Unimplemented\SocialLoadProfilesArgs.cs" />
-    <Content Include="Unimplemented\SocialLoadProfilesOutput.cs" />
-    <Content Include="Unimplemented\SocialProfile.cs" />
-    <Content Include="Unimplemented\SocialRefreshArgs.cs" />
-    <Content Include="Unimplemented\SocialRefreshOutput.cs" />
-    <Content Include="Unimplemented\TestNotification.cs" />
-    <Content Include="Unimplemented\TestNotificationReadSentArgs.cs" />
-    <Content Include="Unimplemented\TestNotificationReadSentOutput.cs" />
-    <Content Include="Unimplemented\TestNotificationRegisteredEndpoint.cs" />
-    <Content Include="Unimplemented\UsePayVaultTestInfoArgs.cs" />
-    <Content Include="Unimplemented\UsePayVaultTestInfoOutput.cs" />
-    <Content Include="Unimplemented\UserAchievements.cs" />
-    <Content Include="Unimplemented\WaitingGameRequest.cs" />
-    <Content Include="Unimplemented\WriteSystemErrorArgs.cs" />
-    <Content Include="Unimplemented\WriteSystemErrorOutput.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <PackageReference Include="MongoDB.Bson" Version="2.10.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="protobuf-net" Version="2.4.4" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="packages.config" />
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <ItemGroup>
+    <None Include="Unimplemented\Achievement.cs" />
+    <None Include="Unimplemented\AchievementsLoadArgs.cs" />
+    <None Include="Unimplemented\AchievementsLoadOutput.cs" />
+    <None Include="Unimplemented\AchievementsProgressAddArgs.cs" />
+    <None Include="Unimplemented\AchievementsProgressAddOutput.cs" />
+    <None Include="Unimplemented\AchievementsProgressCompleteArgs.cs" />
+    <None Include="Unimplemented\AchievementsProgressCompleteOutput.cs" />
+    <None Include="Unimplemented\AchievementsProgressMaxArgs.cs" />
+    <None Include="Unimplemented\AchievementsProgressMaxOutput.cs" />
+    <None Include="Unimplemented\AchievementsProgressSetArgs.cs" />
+    <None Include="Unimplemented\AchievementsProgressSetOutput.cs" />
+    <None Include="Unimplemented\AchievementsRefreshArgs.cs" />
+    <None Include="Unimplemented\AchievementsRefreshOutput.cs" />
+    <None Include="Unimplemented\AuthenticateArgs.cs" />
+    <None Include="Unimplemented\AuthenticateOutput.cs" />
+    <None Include="Unimplemented\AuthenticateStartDialog.cs" />
+    <None Include="Unimplemented\BigDBChangeset.cs" />
+    <None Include="Unimplemented\CreateRoomArgs.cs" />
+    <None Include="Unimplemented\CreateRoomOutput.cs" />
+    <None Include="Unimplemented\CreateTestAccountArgs.cs" />
+    <None Include="Unimplemented\CreateTestAccountOutput.cs" />
+    <None Include="Unimplemented\DeleteIndexRangeArgs.cs" />
+    <None Include="Unimplemented\DeleteIndexRangeOutput.cs" />
+    <None Include="Unimplemented\FlushEventReducersArgs.cs" />
+    <None Include="Unimplemented\FlushEventReducersOutput.cs" />
+    <None Include="Unimplemented\GameRequestsDeleteArgs.cs" />
+    <None Include="Unimplemented\GameRequestsDeleteOutput.cs" />
+    <None Include="Unimplemented\GameRequestsRefreshArgs.cs" />
+    <None Include="Unimplemented\GameRequestsRefreshOutput.cs" />
+    <None Include="Unimplemented\GameRequestsSendArgs.cs" />
+    <None Include="Unimplemented\GameRequestsSendOutput.cs" />
+    <None Include="Unimplemented\LoadIndexRangeArgs.cs" />
+    <None Include="Unimplemented\LoadIndexRangeOutput.cs" />
+    <None Include="Unimplemented\LoadMatchingObjectsArgs.cs" />
+    <None Include="Unimplemented\LoadMatchingObjectsOutput.cs" />
+    <None Include="Unimplemented\Notification.cs" />
+    <None Include="Unimplemented\NotificationsDeleteEndpointsArgs.cs" />
+    <None Include="Unimplemented\NotificationsDeleteEndpointsOutput.cs" />
+    <None Include="Unimplemented\NotificationsEndpoint.cs" />
+    <None Include="Unimplemented\NotificationsEndpointId.cs" />
+    <None Include="Unimplemented\NotificationsRefreshArgs.cs" />
+    <None Include="Unimplemented\NotificationsRefreshOutput.cs" />
+    <None Include="Unimplemented\NotificationsRegisterEndpointsArgs.cs" />
+    <None Include="Unimplemented\NotificationsRegisterEndpointsOutput.cs" />
+    <None Include="Unimplemented\NotificationsSendArgs.cs" />
+    <None Include="Unimplemented\NotificationsSendOutput.cs" />
+    <None Include="Unimplemented\NotificationsToggleEndpointsArgs.cs" />
+    <None Include="Unimplemented\NotificationsToggleEndpointsOutput.cs" />
+    <None Include="Unimplemented\OneScoreAddArgs.cs" />
+    <None Include="Unimplemented\OneScoreAddOutput.cs" />
+    <None Include="Unimplemented\OneScoreLoadArgs.cs" />
+    <None Include="Unimplemented\OneScoreLoadOutput.cs" />
+    <None Include="Unimplemented\OneScoreRefreshArgs.cs" />
+    <None Include="Unimplemented\OneScoreRefreshOutput.cs" />
+    <None Include="Unimplemented\OneScoreSetArgs.cs" />
+    <None Include="Unimplemented\OneScoreSetOutput.cs" />
+    <None Include="Unimplemented\OneScoreValue.cs" />
+    <None Include="Unimplemented\PartnerPaySetTagArgs.cs" />
+    <None Include="Unimplemented\PartnerPaySetTagOutput.cs" />
+    <None Include="Unimplemented\PartnerPayTriggerArgs.cs" />
+    <None Include="Unimplemented\PartnerPayTriggerOutput.cs" />
+    <None Include="Unimplemented\PayVaultUsePaymentInfoArgs.cs" />
+    <None Include="Unimplemented\PayVaultUsePaymentInfoOutput.cs" />
+    <None Include="Unimplemented\PlayerInsightEvent.cs" />
+    <None Include="Unimplemented\PlayerInsightRefreshArgs.cs" />
+    <None Include="Unimplemented\PlayerInsightRefreshOutput.cs" />
+    <None Include="Unimplemented\PlayerInsightSessionKeepAliveArgs.cs" />
+    <None Include="Unimplemented\PlayerInsightSessionKeepAliveOutput.cs" />
+    <None Include="Unimplemented\PlayerInsightSessionStopArgs.cs" />
+    <None Include="Unimplemented\PlayerInsightSessionStopOutput.cs" />
+    <None Include="Unimplemented\PlayerInsightSetSegmentsArgs.cs" />
+    <None Include="Unimplemented\PlayerInsightSetSegmentsOutput.cs" />
+    <None Include="Unimplemented\PlayerInsightTrackEventsArgs.cs" />
+    <None Include="Unimplemented\PlayerInsightTrackEventsOutput.cs" />
+    <None Include="Unimplemented\PlayerInsightTrackExternalPaymentArgs.cs" />
+    <None Include="Unimplemented\PlayerInsightTrackExternalPaymentOutput.cs" />
+    <None Include="Unimplemented\PlayerInsightTrackInvitedByArgs.cs" />
+    <None Include="Unimplemented\PlayerInsightTrackInvitedByOutput.cs" />
+    <None Include="Unimplemented\RemoveTestAccountsArgs.cs" />
+    <None Include="Unimplemented\RemoveTestAccountsOutput.cs" />
+    <None Include="Unimplemented\SaveObjectChangesArgs.cs" />
+    <None Include="Unimplemented\SaveObjectChangesOutput.cs" />
+    <None Include="Unimplemented\SimpleGetCaptchaArgs.cs" />
+    <None Include="Unimplemented\SimpleGetCaptchaOutput.cs" />
+    <None Include="Unimplemented\SimpleRecoverPasswordArgs.cs" />
+    <None Include="Unimplemented\SimpleRecoverPasswordOutput.cs" />
+    <None Include="Unimplemented\SimpleUserGetSecureLoginInfoArgs.cs" />
+    <None Include="Unimplemented\SimpleUserGetSecureLoginInfoOutput.cs" />
+    <None Include="Unimplemented\SocialLoadProfilesArgs.cs" />
+    <None Include="Unimplemented\SocialLoadProfilesOutput.cs" />
+    <None Include="Unimplemented\SocialProfile.cs" />
+    <None Include="Unimplemented\SocialRefreshArgs.cs" />
+    <None Include="Unimplemented\SocialRefreshOutput.cs" />
+    <None Include="Unimplemented\TestNotification.cs" />
+    <None Include="Unimplemented\TestNotificationReadSentArgs.cs" />
+    <None Include="Unimplemented\TestNotificationReadSentOutput.cs" />
+    <None Include="Unimplemented\TestNotificationRegisteredEndpoint.cs" />
+    <None Include="Unimplemented\UsePayVaultTestInfoArgs.cs" />
+    <None Include="Unimplemented\UsePayVaultTestInfoOutput.cs" />
+    <None Include="Unimplemented\UserAchievements.cs" />
+    <None Include="Unimplemented\WaitingGameRequest.cs" />
+    <None Include="Unimplemented\WriteSystemErrorArgs.cs" />
+    <None Include="Unimplemented\WriteSystemErrorOutput.cs" />
+  </ItemGroup>
+
 </Project>

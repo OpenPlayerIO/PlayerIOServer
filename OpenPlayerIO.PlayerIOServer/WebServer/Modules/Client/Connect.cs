@@ -23,7 +23,8 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
         {
             var response = new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.UnsupportedMethod });
 
-            this.Post[$"/api/{Channel}"] = _ => {
+            this.Post($"/api/{Channel}", _ =>
+            {
                 var connectArgs = Serializer.Deserialize<ConnectArgs>(this.Request.Body);
                 var connectOutput = new ConnectOutput();
 
@@ -31,15 +32,16 @@ namespace OpenPlayerIO.PlayerIOServer.WebServer.Modules.Client
                 var collection = database.GetCollection<UserAccount>("_accounts");
 
                 // ensure the proper authentication details have been provided
-                if (collection.AsQueryable().Where(account => account.ConnectUserId == connectArgs.UserId && account.Password == connectArgs.Auth).Any()) {
+                if (collection.AsQueryable().Where(account => account.ConnectUserId == connectArgs.UserId && account.Password == connectArgs.Auth).Any())
+                {
                     connectOutput.UserId = connectArgs.UserId;
                     connectOutput.Token = new PlayerToken(connectArgs.GameId, connectOutput.UserId, DateTimeOffset.UtcNow.AddHours(24)).Encode();
 
                     return new ChannelResponse().Get(connectOutput, connectOutput.Token);
-                } 
+                }
 
                 return new ChannelResponse().Get(new Error() { ErrorCode = (int)ErrorCode.InvalidAuth });
-            };
+            });
         }
     }
 }

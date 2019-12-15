@@ -6,6 +6,7 @@ namespace OpenPlayerIO.PlayerIOServer.ExampleGame
     using GameServer.Attributes;
     using GameServer.Helpers;
     using GameServer.Player;
+    using BasePlayer = GameServer.Player.BasePlayer;
 
     public class MyPlayer : BasePlayer
     {
